@@ -8,6 +8,7 @@ import { AssessmentsModule } from './modules/assessments/assessments.module';
 import { ConfigModule, ConfigType } from '@nestjs/config';
 import { envValidationSchema } from 'src/config/env.validation';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UsersModule } from './modules/users/users.module';
 import databaseConfig from 'src/config/database.config';
 
 @Module({
@@ -30,6 +31,7 @@ import databaseConfig from 'src/config/database.config';
     AdminModule,
     CoursesModule,
     AssessmentsModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
