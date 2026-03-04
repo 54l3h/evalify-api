@@ -1,7 +1,18 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Param, Post } from '@nestjs/common';
 import { CoursesService } from './courses.service';
 
-@Controller('courses')
+@Controller({ path: 'courses', version: '1' })
 export class CoursesController {
   constructor(private readonly coursesService: CoursesService) {}
+  @Get()
+  getCourses() {}
+
+  @Get(':id')
+  getCourseById(@Param('id') courseId: string) {}
+
+  @Post(':id/enroll')
+  enroll(@Param('id') courseId: string) {}
+
+  @Get(':id/assessments')
+  getCourseAssessments(@Param('id') courseId: string) {}
 }
