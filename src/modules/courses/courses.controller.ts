@@ -8,11 +8,11 @@ export class CoursesController {
   getCourses() {}
 
   @Get(':id')
-  getCourseById(@Param('id') courseId: string) {}
+  getCourseById(@Param('id') id: string) {}
 
   @Post(':id/enroll')
-  enroll(@Param('id') courseId: string) {}
+  enroll(@Param('id') id: string) {}
 
   @Get(':id/assessments')
-  getCourseAssessments(@Param('id') courseId: string) {}
+  getCourseAssessments(@Param('id') id: string) {}
 }

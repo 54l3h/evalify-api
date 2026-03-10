@@ -10,10 +10,12 @@ import { envValidationSchema } from 'src/config/env.validation';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './modules/users/users.module';
 import databaseConfig from 'src/config/database.config';
+import appConfig from 'src/config/app.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
+      load: [databaseConfig, appConfig],
       isGlobal: true,
       validationSchema: envValidationSchema,
       validationOptions: {
@@ -21,11 +23,8 @@ import databaseConfig from 'src/config/database.config';
       },
     }),
     TypeOrmModule.forRootAsync({
-      imports: [ConfigModule.forFeature(databaseConfig)],
       inject: [databaseConfig.KEY], // token name => "grab this specific thing"
-      useFactory: (dbConfig: ConfigType<typeof databaseConfig>) => ({
-        ...dbConfig,
-      }),
+      useFactory: (dbCfg: ConfigType<typeof databaseConfig>) => dbCfg,
     }),
     AuthModule,
     AdminModule,

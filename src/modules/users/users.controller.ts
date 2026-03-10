@@ -20,5 +20,5 @@ export class UsersController {
   getMyAssessmentsHistory() {}
 
   @Get('me/assessments/:id/history')
-  getMySpecificAssessmentHistory(@Param('id') assessmentId: string) {}
+  getMySpecificAssessmentHistory(@Param('id') id: string) {}
 }

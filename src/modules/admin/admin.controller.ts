@@ -36,7 +36,7 @@ export class AdminController {
   deleteCourse(@Param('id') id: string) {}
 
   // Assessments Management
-  @Get()
+  @Get('assessments')
   getAssessments() {}
 
   @Post('courses/:courseId/assessments')
